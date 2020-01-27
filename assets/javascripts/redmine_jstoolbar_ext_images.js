@@ -43,7 +43,7 @@
     };
 
     var old_attachments = function(){
-      var files = $('div.attachments .icon-attachment').map(function () {
+      var files = $('div.attachments .icon-download').map(function () {
         return $(this).attr('href');
       });
       return files.length ? files : [];
@@ -117,7 +117,7 @@
     var other_button = function(){
       var fn = RedmineWikiToolbarExt.ImagesOriginalFn.replace(/this/, 'toolbar');
       return $('<button class="full">[' + jsToolBar.strings['Image'] + ']</button>')
-        .click(function(){
+        .mousedown(function(){
           eval(fn);
         }).add(build_thumbnail_button({ label: '', beg: '{{thumbnail(', end: ', size=100, title=Thumbnail)}}' }));
     };
@@ -147,13 +147,13 @@
       var text = decodeURIComponent(data.label);
       return $('<button class="full" title="' + title + '">' + text + '</button>')
         .data(data)
-        .click( image_button_click);
+        .mousedown(image_button_click);
     };
 
     var build_thumbnail_button = function (data) {
       return $('<button class="thumbnail">&gt; thumb</button>')
         .data(data)
-        .click(image_button_click);
+        .mousedown(image_button_click);
     };
 
     var image_button_click = function(event){

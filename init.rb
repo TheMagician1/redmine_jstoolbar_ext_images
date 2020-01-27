@@ -1,7 +1,7 @@
 # encoding: utf-8
 require_dependency 'redmine_jstoolbar_ext_images'
 
-ActionDispatch::Callbacks.to_prepare do
+Rails.configuration.to_prepare do
   require_dependency 'wiki_formatting_macros_patch'
 end
 
